@@ -25,4 +25,11 @@
 <% end %>
 
 <h5>Comments:</h5>
-<%= render 'comments', post: @post, profile: false %>
+<% @post.comments.reload %>
+<% @post.comments.each do |comment| %>
+  <div class='well'>
+    <%= comment.body %><br/>
+    <span class='quiet'>Posted by </span> <%= link_to comment.creator.username, '' %>
+    <small> at <%= display_datetime(comment.created_at) %></small>
+  </div>
+<% end %>
