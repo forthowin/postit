@@ -1,0 +1,15 @@
+<%= render 'shared/content_title', title: 'Your Profile' %>
+
+<div class='well'>
+  <%= "Username: #{@user.username}" %>
+</div>
+
+<h5><%= "#{@user.username}'s Activity" %></h5>
+
+<% @user.posts.each do |post| %>
+  <%= render 'posts/post', post: post %>
+<% end %>
+
+<% @user.posts.each do |post| %>
+  <%= render 'posts/comments', post: post, profile: true %>
+<% end %>

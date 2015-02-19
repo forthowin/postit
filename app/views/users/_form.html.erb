@@ -1,0 +1,16 @@
+<div class='well'>
+  <%= form_for @user do |f| %>
+    <%= render 'shared/errors', obj: @user %>
+    <div class='control-group'>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </dv>
+    <div class='control-group'>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </dv>
+    <div class='control-group'>
+      <%= f.submit button %>
+    </div>
+  <% end %>
+</div>

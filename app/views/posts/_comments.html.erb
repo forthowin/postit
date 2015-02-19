@@ -1,0 +1,13 @@
+<% post.comments.reload %>
+<% post.comments.each do |comment| %>
+  <div class='well'>
+    <%= "\"#{comment.body}\"" %>
+    <% if profile %>
+      on
+      <%= (link_to post.title, post_path(post)) %>
+    <% end %>
+    <br/>
+    <span class='quiet'>Posted by </span> <%= link_to comment.creator.username, '' %>
+    <small> at <%= display_datetime(comment.created_at) %></small>
+  </div>
+<% end %>
