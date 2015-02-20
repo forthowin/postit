@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def to_boolean(str)
+    str == 'true'
+  end
 end
