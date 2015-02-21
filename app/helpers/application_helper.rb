@@ -36,4 +36,30 @@ module ApplicationHelper
       "#{diff} " + "year".pluralize(diff)
     end
   end
+
+  def total_karma(user)
+    posts_karma(user) + comments_karma(user)
+  end
+
+  private
+
+  def posts_karma(user)
+    karma = 0
+    user.posts.each do |post|
+      post.votes.each do |votes|
+        votes.vote ? karma += 1 : karma -= 1
+      end
+    end
+    karma
+  end
+
+  def comments_karma(user)
+    karma = 0
+    user.comments.each do |comment|
+      comment.votes.each do |votes|
+        votes.vote ? karma += 1 : karma -= 1
+      end
+    end
+    karma
+  end
 end

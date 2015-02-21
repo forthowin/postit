@@ -1,7 +1,9 @@
-<%= render 'shared/content_title', title: 'Your Profile' %>
+<%= render 'shared/content_title', title: "#{@user.username}'s Profile" %>
 
 <div class='well'>
   <%= "Username: #{@user.username}" %>
+  <br/>
+  <%= "Karma: #{total_karma(@user)}" %>
 </div>
 
 <h5><%= @user.username%>'s Activity</h5>
