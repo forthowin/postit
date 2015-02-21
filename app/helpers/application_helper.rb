@@ -6,7 +6,7 @@ module ApplicationHelper
   YEAR_IN_SECONDS = MONTH_IN_SECONDS * 12
 
   def fixed_url(str)
-    str.start_with?('http://') ? str : "http://#{str}"
+    str.start_with?('https://') ? str : "https://#{str}"
   end
 
   def display_datetime(dt)
