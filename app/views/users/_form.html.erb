@@ -8,9 +8,13 @@
     <div class='control-group'>
       <%= f.label :password %>
       <%= f.password_field :password %>
-    </dv>
+    </div>
     <div class='control-group'>
-      <%= f.submit button %>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <div class='control-group'>
+      <%= f.submit button, class: 'btn btn-primary' %>
     </div>
   <% end %>
 </div>
