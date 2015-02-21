@@ -15,7 +15,7 @@
       on <%= (link_to comment.post.title, post_path(comment.post)) %>
     <% end %>
     <br/>
-    <span class='quiet'>Posted by </span> <%= link_to comment.creator.username, user_path(comment.creator) %>
-    <small> at <%= display_datetime(comment.created_at) %></small>
+    <span class='quiet'>by </span> <%= link_to comment.creator.username, user_path(comment.creator) %>
+    <small> <%= time_difference(comment.created_at) %> ago</small>
   </div>
 </div>

@@ -10,7 +10,10 @@
 
 <%= render 'shared/content_title', title: @post.title %>
 <p><%= @post.description %></p>
-<p>Posted by <%= @post.creator.username %> on <%= @post.created_at %></p>
+<p>
+  <span class='quiet'>Posted by </span> <%= link_to @post.creator.username, user_path(@post.creator) %>
+  <small> <%= time_difference(@post.created_at) %> ago</small>
+</p>
 <hr/>
  
  <% if logged_in? %>

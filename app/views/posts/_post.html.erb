@@ -15,7 +15,7 @@
     <p><%= post.description %></p>
     <p>
       <span class='quiet'>Posted by </span> <%= link_to post.creator.username, user_path(post.creator) %>
-      <small> at <%= display_datetime(post.created_at) %></small>
+      <small> <%= time_difference(post.created_at) %> ago</small>
     </p>
     <span>
       <%= link_to "#{post.comments.size} comments", post_path(post) %>
