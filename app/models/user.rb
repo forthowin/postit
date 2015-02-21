@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true, length: {minimum: 5}, allow_blank: true, on: :update
   validate  :password_does_not_match_password_confirmation, on: :update
 
+  def to_param
+    username
+  end
+
   private
 
   def password_does_not_match_password_confirmation

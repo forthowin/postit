@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
-  before_action :require_user, except: [:new, :create]
+  before_action :require_user, except: [:new, :create, :show]
   before_action :require_same_user, only: [:edit, :update]
 
   def show
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find_by_username(params[:id])
   end
 
   def require_same_user
