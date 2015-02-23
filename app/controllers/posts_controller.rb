@@ -39,6 +39,7 @@ class PostsController < ApplicationController
   end
 
   def vote
+    binding.pry
     @vote = Vote.where("user_id = ? AND voteable_type = ? AND voteable_id = ?", current_user.id, @post.class.name, @post.id).first
     if @vote.nil? #check to see if a vote exists
       @vote = Vote.create(creator: current_user, vote: params[:vote], voteable: @post) #create if vote does not exists
@@ -49,7 +50,13 @@ class PostsController < ApplicationController
         @vote.update(vote: params[:vote])
       end
     end
-    redirect_to :back
+
+    respond_to do |format|
+      format.html do
+        redirect_to :back
+      end
+      format.js
+    end
   end
 
   private
