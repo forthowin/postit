@@ -39,7 +39,6 @@ class PostsController < ApplicationController
   end
 
   def vote
-    binding.pry
     @vote = Vote.where("user_id = ? AND voteable_type = ? AND voteable_id = ?", current_user.id, @post.class.name, @post.id).first
     if @vote.nil? #check to see if a vote exists
       @vote = Vote.create(creator: current_user, vote: params[:vote], voteable: @post) #create if vote does not exists

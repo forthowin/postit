@@ -1,1 +1,0 @@
-$("#post_<%= @post.id %>_votes").html("<%= @post.total_votes %>");

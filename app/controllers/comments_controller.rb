@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :set_comment, only: [:vote]
   before_action :require_user
 
   def create
@@ -15,7 +16,6 @@ class CommentsController < ApplicationController
   end
 
   def vote
-    @comment = Comment.find(params[:id])
     @vote = Vote.where("user_id = ? AND voteable_type = ? AND voteable_id = ?", current_user.id, @comment.class.name, @comment.id).first
     if @vote.nil? #check to see if a vote exists
       @vote = Vote.create(creator: current_user, vote: params[:vote], voteable: @comment) #create if vote does not exists
@@ -26,6 +26,16 @@ class CommentsController < ApplicationController
         @vote.update(vote: params[:vote])
       end
     end
-    redirect_to :back
+
+    respond_to do |format|
+      format.html{ redirect_to :back}
+      format.js
+    end
+  end
+
+  private
+
+  def set_comment
+    @comment = Comment.find(params[:id])
   end
 end

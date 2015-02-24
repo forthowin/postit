@@ -1,0 +1,5 @@
+<% if logged_in? %>
+  $("#comment_<%= @comment.id %>_votes").html("<%= @comment.total_votes %>");
+<% else %>
+  alert("You must be logged in to vote.");
+<% end %>
