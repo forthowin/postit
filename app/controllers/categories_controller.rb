@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :require_user, only: [:new, :create]
   def show
-    @category = Category.find(params[:id])
+    @category = Category.find_by slug: params[:id]
   end
 
   def new

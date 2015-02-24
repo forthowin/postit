@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find_by_username(params[:id])
+    @user = User.find_by slug: params[:id]
   end
 
   def require_same_user
