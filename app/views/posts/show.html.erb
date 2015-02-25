@@ -1,4 +1,4 @@
-<% if logged_in? and same_user?(@post) %>
+<% if logged_in? and (same_user?(@post) or current_user.admin?)%>
   <div class='pull-right'>
     <%= link_to '[edit this post]', edit_post_path(@post) %>
   </div>
@@ -12,7 +12,7 @@
 <p><%= @post.description %></p>
 <p>
   <span class='quiet'>Posted by </span> <%= link_to @post.creator.username, user_path(@post.creator) %>
-  <small> <%= time_difference(@post.created_at) %> ago</small>
+  <small> <%= time_difference(@post.created_at) %> ago at <%= display_datetime(@post.created_at) %></small>
 </p>
 <hr/>
  

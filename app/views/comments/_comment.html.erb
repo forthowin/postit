@@ -16,6 +16,6 @@
     <% end %>
     <br/>
     <span class='quiet'>by </span> <%= link_to comment.creator.username, user_path(comment.creator) %>
-    <small> <%= time_difference(comment.created_at) %> ago</small>
+    <small> <%= time_difference(comment.created_at) %> ago at <%= display_datetime(comment.created_at) %></small>
   </div>
 </div>
